@@ -1,5 +1,5 @@
 //Locals
-var CookieStorageAdapter = require('./storage-adapters/cookie'),
+var SessionStorageAdapter = require('./storage-adapters/session'),
     defaultOptions = require('./default-options'),
     eventify = require('./helpers/eventify'),
     extendObject = require('./helpers/extend-object'),
@@ -135,7 +135,7 @@ BillyApiClient.prototype = {
 
 //Add storage adapters to class
 BillyApiClient.storageAdapters = {
-    CookieStorageAdapter: CookieStorageAdapter,
+    SessionStorageAdapter: SessionStorageAdapter,
     MemoryStorageAdapter: MemoryStorageAdapter
 };
 
