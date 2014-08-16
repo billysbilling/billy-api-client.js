@@ -4,6 +4,7 @@ var CookieStorageAdapter = require('./storage-adapters/cookie'),
     eventify = require('./helpers/eventify'),
     extendObject = require('./helpers/extend-object'),
     isAuthenticatedUrl = require('./helpers/is-authenticated-url'),
+    JQueryAjaxAdapter = require('./request-adapters/jquery-ajax'),
     MemoryStorageAdapter = require('./storage-adapters/memory'),
     WebStorageAdapter = require('./storage-adapters/web');
 
@@ -15,18 +16,16 @@ var login = require('./methods/login'),
 var BillyApiClient = function(options) {
 
     //Apply options
-    this.options = extendObject({}, defaultOptions, options || {});
-
-    //Check that ajax implementation exists
-    if (!this.options.ajax) {
-        throw new Error('No ajax implementation was found in default options.  Please provide an ajax implementation in the options hash when instantiating this client.');
-    }
+    this.options = extendObject({}, defaultOptions, options || {})
 
     //Add event emitter methods and additional listeners
     eventify(this);
 
     //Instantiate storage adapter
     this.storageAdapter = this.options.storageAdapter || new MemoryStorageAdapter();
+
+    //Instantiate request adapter
+    this.requestAdapter = this.options.requestAdapter || new JQueryAjaxAdapter();
 
     //Check initial authorization
     this.isAuthorized = !!this.storageAdapter.getValue('accessToken');
