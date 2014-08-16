@@ -1,10 +1,11 @@
 //Locals
-var SessionStorageAdapter = require('./storage-adapters/session'),
+var CookieStorageAdapter = require('./storage-adapters/cookie'),
     defaultOptions = require('./default-options'),
     eventify = require('./helpers/eventify'),
     extendObject = require('./helpers/extend-object'),
     isAuthenticatedUrl = require('./helpers/is-authenticated-url'),
-    MemoryStorageAdapter = require('./storage-adapters/memory');
+    MemoryStorageAdapter = require('./storage-adapters/memory'),
+    WebStorageAdapter = require('./storage-adapters/web');
 
 //Methods
 var login = require('./methods/login'),
@@ -135,8 +136,9 @@ BillyApiClient.prototype = {
 
 //Add storage adapters to class
 BillyApiClient.storageAdapters = {
-    SessionStorageAdapter: SessionStorageAdapter,
-    MemoryStorageAdapter: MemoryStorageAdapter
+    CookieStorageAdapter: CookieStorageAdapter,
+    MemoryStorageAdapter: MemoryStorageAdapter,
+    WebStorageAdapter: WebStorageAdapter
 };
 
 module.exports = BillyApiClient;

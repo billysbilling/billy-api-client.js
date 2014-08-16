@@ -1,4 +1,4 @@
-var SessionStorageAdapter = module.exports = function(options) {
+var WebStorageAdapter = module.exports = function(options) {
     options = options || {};
 
     //Check support
@@ -15,7 +15,7 @@ var SessionStorageAdapter = module.exports = function(options) {
     }
 };
 
-SessionStorageAdapter.prototype = {
+WebStorageAdapter.prototype = {
 
     /**
      * Storage key prefix
