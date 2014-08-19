@@ -19,6 +19,7 @@ module.exports =  {
         '/currencies',
         '/ipLocation',
         '/locales',
+        '/organizationInvitations',
         '/user/login',
         '/user/passwordReset',
         '/user/passwordResetRequest',
