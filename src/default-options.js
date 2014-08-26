@@ -19,7 +19,7 @@ module.exports =  {
         '/currencies',
         '/ipLocation',
         '/locales',
-        '/organizationInvitations/', //Trailing slash to only catch subroutes
+        /\/organizationInvitations\/(.+)\/newUserAccept^/i,
         '/user/login',
         '/user/passwordReset',
         '/user/passwordResetRequest',
