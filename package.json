@@ -1,6 +1,6 @@
 {
   "name": "billy-api-client.js",
-  "version": "0.3.0",
+  "version": "0.3.3",
   "dependencies": {
     "wolfy87-eventemitter": ">=4.0 <5.0"
   },
