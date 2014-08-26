@@ -19,7 +19,8 @@ module.exports =  {
         '/currencies',
         '/ipLocation',
         '/locales',
-        /\/organizationInvitations\/(.+)\/newUserAccept^/i,
+        /\/organizationInvitations\/([^\/]+)\/([^\/]+)$/i, //Getting a single invitation
+        /\/organizationInvitations\/([^\/]+)\/([^\/]+)\/newUserAccept$/i, //Posting a new user via invitation
         '/user/login',
         '/user/passwordReset',
         '/user/passwordResetRequest',
