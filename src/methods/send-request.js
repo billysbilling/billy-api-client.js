@@ -17,7 +17,7 @@ module.exports = function(client, hash) {
     ajaxHash.error = errorWrapper(client, ajaxHash.error);
 
     //Do the request
-    req = client.options.ajax(ajaxHash);
+    req = client.requestAdapter.send(ajaxHash);
 
     //Return the request
     return req;
