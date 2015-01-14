@@ -91,7 +91,12 @@ BillyApiClient.prototype = {
 
         //Add Accept-Language header if language options is set
         if (this.options.language) {
-            hash.headers['Accept-Language'] = this.options.language;
+            var hasLanguage = Object.keys(hash.headers).some(function(name) {
+                return name.toLowerCase() === 'accept-language'
+            })
+            if (!hasLanguage) {
+                hash.headers['Accept-Language'] = this.options.language;
+            }
         }
 
         //Make the request

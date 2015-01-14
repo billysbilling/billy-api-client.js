@@ -76,3 +76,46 @@ asyncTest('authorized DELETE', function() {
         }
     });
 });
+
+asyncTest('sends Accept-Language', function() {
+    expect(2);
+
+    client.options.language = 'en_US'
+    client.storageAdapter.setValue('accessToken', 'abc');
+
+    var settingRequest = amock('GET', '/lala')
+        .reply(200)
+        .before(function(xhr) {
+            equal(xhr.requestHeaders['Accept-Language'], 'en_US')
+        })
+
+    client.get('/lala', {
+        success: function() {
+            settingRequest.done();
+            start();
+        }
+    });
+});
+
+asyncTest('can override language', function() {
+    expect(2);
+
+    client.options.language = 'en_US'
+    client.storageAdapter.setValue('accessToken', 'abc');
+
+    var settingRequest = amock('GET', '/lala')
+        .reply(200)
+        .before(function(xhr) {
+            equal(xhr.requestHeaders['Accept-Language'], 'da_DK')
+        })
+
+    client.get('/lala', {
+        headers: {
+            'Accept-Language': 'da_DK'
+        },
+        success: function() {
+            settingRequest.done();
+            start();
+        }
+    });
+});
